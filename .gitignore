@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+.venv/
+
+# Secrets — NEVER commit
+.env
+.netrc
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Black Duck
+.synopsys/
+
+# OS
+.DS_Store
+
+# Project instructions (local only)
+CLAUDE.md
+
+# Superpowers workspace
+.superpowers/

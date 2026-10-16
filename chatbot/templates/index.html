@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <div class="header-content">
+                <div class="header-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+                <div class="header-text">
+                    <h1>Customer Support</h1>
+                    <span class="status-indicator">
+                        <span class="status-dot"></span>
+                        Online
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <main class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Chat messages">
+        </main>
+
+        <footer class="chat-input-area">
+            <form class="input-form" id="chatForm" aria-label="Send a message">
+                <input
+                    type="text"
+                    id="messageInput"
+                    class="message-input"
+                    placeholder="Type your message..."
+                    autocomplete="off"
+                    aria-label="Message"
+                >
+                <button type="submit" class="send-button" id="sendButton" aria-label="Send message">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </form>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
