@@ -27,6 +27,7 @@ if [[ -n "${BLACKDUCK_API_TOKEN:-}" ]]; then
 
     BLACKDUCK_URL="${BLACKDUCK_URL:-https://redhathub.blackducksoftware.com}"
 
+    echo "  \$ bash detect.sh --blackduck.url=$BLACKDUCK_URL"
     bash <(curl -s -L https://detect.blackduck.com/detect.sh) \
         --blackduck.url="$BLACKDUCK_URL" \
         --blackduck.api.token="$BLACKDUCK_API_TOKEN" \
@@ -37,6 +38,7 @@ fi
 # Try pip-audit (exits non-zero when vulnerabilities found — that's expected)
 if command -v pip-audit &>/dev/null; then
     echo "Scanner: pip-audit"
+    echo "  \$ pip-audit"
     echo ""
     pip-audit || true
     exit 0
@@ -45,6 +47,7 @@ fi
 # Try grype
 if command -v grype &>/dev/null; then
     echo "Scanner: Grype"
+    echo "  \$ grype dir:."
     echo ""
     grype dir:. --only-fixed
     exit 0

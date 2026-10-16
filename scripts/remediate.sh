@@ -49,7 +49,7 @@ echo ""
 
 # Install from Lightwell — packages not in the catalog will fail gracefully
 for pkg in $PACKAGES; do
-    echo "  Checking $pkg in Lightwell catalog..."
+    echo "  \$ pip install --index-url $LIGHTWELL_URL $pkg"
     OUTPUT=$(pip install --force-reinstall --no-deps --index-url "$LIGHTWELL_URL" "$pkg" --quiet 2>&1) || true
     if [[ "$OUTPUT" != *"ERROR"* ]] && [[ "$OUTPUT" != *"No matching distribution"* ]]; then
         version=$(pip show "$pkg" 2>/dev/null | grep "^Version:" | awk '{print $2}')
@@ -65,8 +65,8 @@ for pkg in $PACKAGES; do
             echo "  $OUTPUT" | tail -3
         fi
     fi
+    echo ""
 done
 
-echo ""
 echo "Remediation complete."
 echo "Run 'make verify' to confirm patched versions."

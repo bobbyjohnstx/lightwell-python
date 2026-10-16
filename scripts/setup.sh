@@ -22,10 +22,13 @@ if [[ -d "$VENV_DIR" ]]; then
 fi
 
 echo "Creating virtual environment..."
+echo "  \$ python3 -m venv venv"
 python3 -m venv "$VENV_DIR"
 source "$VENV_DIR/bin/activate"
 
+echo ""
 echo "Installing dependencies from PyPI (unpatched versions)..."
+echo "  \$ pip install -r $APP/requirements.txt"
 pip install --quiet -r "$REQ_FILE"
 
 echo ""

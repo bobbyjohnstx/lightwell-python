@@ -17,6 +17,9 @@ fi
 
 source "$VENV_DIR/bin/activate"
 
+echo "  \$ pip show <package> | grep Version"
+echo ""
+
 FOUND_RHLW=false
 
 while IFS= read -r line; do

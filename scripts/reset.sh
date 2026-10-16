@@ -10,7 +10,7 @@ echo "=== Demo Reset ==="
 echo ""
 
 if [[ -d "$VENV_DIR" ]]; then
-    echo "Removing virtual environment..."
+    echo "  \$ rm -rf venv"
     rm -rf "$VENV_DIR"
 fi
 
