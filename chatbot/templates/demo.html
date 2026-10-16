@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightwell Network — Supply Chain Security Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700;900&family=Red+Hat+Text:wght@400;500;700&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/demo.css">
+</head>
+<body>
+
+    <!-- ── Header ──────────────────────────────────────────── -->
+    <header class="demo-header" role="banner">
+        <div class="header-left">
+            <svg class="hat-icon" width="36" height="26" viewBox="0 0 36 26" aria-hidden="true">
+                <ellipse cx="18" cy="19" rx="16" ry="5.5" fill="#EE0000"/>
+                <path d="M12 18C12 11 14 4 18 4C22 4 24 11 24 18" fill="#CC0000"/>
+            </svg>
+            <span class="brand-name">Red Hat</span>
+            <span class="brand-divider" aria-hidden="true"></span>
+            <span class="product-name">Lightwell Network</span>
+        </div>
+        <div class="header-right">
+            <span class="header-subtitle">Supply Chain Security</span>
+        </div>
+    </header>
+
+    <!-- ── Step Indicator Bar ──────────────────────────────── -->
+    <nav class="step-bar" aria-label="Demo steps">
+        <ol class="step-dots" role="tablist" aria-orientation="horizontal">
+            <li class="step-item active" role="tab" tabindex="0" aria-selected="true" aria-label="Step 1: The Application" data-step="1">
+                <span class="dot-number">1</span>
+            </li>
+            <li class="step-line" aria-hidden="true"></li>
+            <li class="step-item" role="tab" tabindex="-1" aria-selected="false" aria-label="Step 2: The Problem" data-step="2">
+                <span class="dot-number">2</span>
+            </li>
+            <li class="step-line" aria-hidden="true"></li>
+            <li class="step-item" role="tab" tabindex="-1" aria-selected="false" aria-label="Step 3: The Fix" data-step="3">
+                <span class="dot-number">3</span>
+            </li>
+            <li class="step-line" aria-hidden="true"></li>
+            <li class="step-item" role="tab" tabindex="-1" aria-selected="false" aria-label="Step 4: The Result" data-step="4">
+                <span class="dot-number">4</span>
+            </li>
+            <li class="step-line" aria-hidden="true"></li>
+            <li class="step-item" role="tab" tabindex="-1" aria-selected="false" aria-label="Step 5: SBOM" data-step="5">
+                <span class="dot-number">5</span>
+            </li>
+            <li class="step-line" aria-hidden="true"></li>
+            <li class="step-item" role="tab" tabindex="-1" aria-selected="false" aria-label="Step 6: Provenance" data-step="6">
+                <span class="dot-number">6</span>
+            </li>
+            <li class="step-line" aria-hidden="true"></li>
+            <li class="step-item" role="tab" tabindex="-1" aria-selected="false" aria-label="Step 7: VEX" data-step="7">
+                <span class="dot-number">7</span>
+            </li>
+            <li class="step-line" aria-hidden="true"></li>
+            <li class="step-item" role="tab" tabindex="-1" aria-selected="false" aria-label="Step 8: Architecture" data-step="8">
+                <span class="dot-number">8</span>
+            </li>
+        </ol>
+    </nav>
+
+    <!-- ── Main Content ────────────────────────────────────── -->
+    <main class="step-content" id="stepContent">
+
+        <!-- ── STEP 1: The Application ─────────────────── -->
+        <section class="step-panel active" data-step="1" role="tabpanel" aria-label="Step 1: The Application">
+            <div class="panel-header">
+                <span class="step-badge">Step 1</span>
+                <h2 class="panel-title">The Application</h2>
+                <p class="panel-subtitle">A typical Python web app with open source dependencies</p>
+            </div>
+            <div class="panel-body">
+                <div class="narrative">
+                    <p>This is what your developers are already running.</p>
+                </div>
+
+                <div class="dep-cards">
+                    <div class="dep-card">
+                        <div class="dep-card-header">
+                            <h4>PyPDF2</h4>
+                            <span class="dep-version">3.0.1</span>
+                        </div>
+                        <p class="dep-desc">PDF reading, splitting, merging, and writing library</p>
+                    </div>
+                    <div class="dep-card">
+                        <div class="dep-card-header">
+                            <h4>sqlparse</h4>
+                            <span class="dep-version">0.5.5</span>
+                        </div>
+                        <p class="dep-desc">Non-validating SQL parser module for Python</p>
+                    </div>
+                </div>
+
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot dot-red"></span>
+                        <span class="terminal-dot dot-yellow"></span>
+                        <span class="terminal-dot dot-green"></span>
+                        <span class="terminal-title">Terminal</span>
+                    </div>
+                    <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">pip list</span>
+<span class="t-muted">Package      Version</span>
+<span class="t-muted">------------ -------</span>
+PyPDF2       3.0.1
+sqlparse     0.5.5
+pip          24.3.1
+setuptools   75.6.0</pre>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn-next" data-next="2">Next: The Problem <span aria-hidden="true">&rarr;</span></button>
+            </div>
+        </section>
+
+        <!-- ── STEP 2: The Problem ─────────────────────── -->
+        <section class="step-panel" data-step="2" role="tabpanel" aria-label="Step 2: The Problem">
+            <div class="panel-header">
+                <span class="step-badge">Step 2</span>
+                <h2 class="panel-title">The Problem</h2>
+                <p class="panel-subtitle">Known vulnerabilities in your dependencies</p>
+            </div>
+            <div class="panel-body">
+                <div class="narrative">
+                    <p>These are the exact versions your developers pinned. They work &mdash; but they have known vulnerabilities.</p>
+                </div>
+
+                <div class="stat-hero stat-danger">
+                    <span class="stat-number">10</span>
+                    <span class="stat-label">Known CVEs</span>
+                </div>
+
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot dot-red"></span>
+                        <span class="terminal-dot dot-yellow"></span>
+                        <span class="terminal-dot dot-green"></span>
+                        <span class="terminal-title">Terminal</span>
+                    </div>
+                    <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">make scan</span>
+<span class="t-muted">Scanning dependencies against NVD database...</span>
+<span class="t-red">Found 10 vulnerabilities in 2 packages.</span></pre>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="vuln-table" aria-label="Vulnerability scan results">
+                        <thead>
+                            <tr>
+                                <th scope="col">CVE ID</th>
+                                <th scope="col">Package</th>
+                                <th scope="col">Severity</th>
+                                <th scope="col">Summary</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-cve">PYSEC-2026-1835</td>
+                                <td class="col-pkg">PyPDF2 3.0.1</td>
+                                <td><span class="badge badge-high">HIGH</span></td>
+                                <td>Infinite loop via crafted PDF causing denial of service</td>
+                            </tr>
+                            <tr>
+                                <td class="col-cve">PYSEC-2026-1836</td>
+                                <td class="col-pkg">sqlparse 0.5.5</td>
+                                <td><span class="badge badge-high">HIGH</span></td>
+                                <td>ReDoS in comment parsing</td>
+                            </tr>
+                            <tr>
+                                <td class="col-cve">PYSEC-2026-1837</td>
+                                <td class="col-pkg">sqlparse 0.5.5</td>
+                                <td><span class="badge badge-high">HIGH</span></td>
+                                <td>Stack overflow via deeply nested subqueries</td>
+                            </tr>
+                            <tr>
+                                <td class="col-cve">PYSEC-2026-1838</td>
+                                <td class="col-pkg">sqlparse 0.5.5</td>
+                                <td><span class="badge badge-high">HIGH</span></td>
+                                <td>Injection through malformed unicode escapes</td>
+                            </tr>
+                            <tr>
+                                <td class="col-cve">PYSEC-2026-1839</td>
+                                <td class="col-pkg">sqlparse 0.5.5</td>
+                                <td><span class="badge badge-high">HIGH</span></td>
+                                <td>Buffer overflow in tokenizer with oversized identifiers</td>
+                            </tr>
+                            <tr>
+                                <td class="col-cve">PYSEC-2026-1840</td>
+                                <td class="col-pkg">sqlparse 0.5.5</td>
+                                <td><span class="badge badge-medium">MED</span></td>
+                                <td>Resource consumption via recursive CTE parsing</td>
+                            </tr>
+                            <tr>
+                                <td class="col-cve">PYSEC-2026-1841</td>
+                                <td class="col-pkg">sqlparse 0.5.5</td>
+                                <td><span class="badge badge-high">HIGH</span></td>
+                                <td>Code execution through crafted function names</td>
+                            </tr>
+                            <tr>
+                                <td class="col-cve">PYSEC-2026-1842</td>
+                                <td class="col-pkg">sqlparse 0.5.5</td>
+                                <td><span class="badge badge-high">HIGH</span></td>
+                                <td>Memory exhaustion via crafted CASE expressions</td>
+                            </tr>
+                            <tr>
+                                <td class="col-cve">PYSEC-2026-1843</td>
+                                <td class="col-pkg">sqlparse 0.5.5</td>
+                                <td><span class="badge badge-medium">MED</span></td>
+                                <td>Information disclosure through parse error messages</td>
+                            </tr>
+                            <tr>
+                                <td class="col-cve">PYSEC-2026-1844</td>
+                                <td class="col-pkg">sqlparse 0.5.5</td>
+                                <td><span class="badge badge-high">HIGH</span></td>
+                                <td>DoS via malformed GROUP BY processing</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn-prev" data-prev="1"><span aria-hidden="true">&larr;</span> Back</button>
+                <button class="btn-next" data-next="3">Next: The Fix <span aria-hidden="true">&rarr;</span></button>
+            </div>
+        </section>
+
+        <!-- ── STEP 3: The Fix ─────────────────────────── -->
+        <section class="step-panel" data-step="3" role="tabpanel" aria-label="Step 3: The Fix">
+            <div class="panel-header">
+                <span class="step-badge">Step 3</span>
+                <h2 class="panel-title">The Fix</h2>
+                <p class="panel-subtitle">Zero code changes. One configuration change.</p>
+            </div>
+            <div class="panel-body">
+                <div class="narrative">
+                    <p>No upgrade. No breaking changes. No regression testing.</p>
+                </div>
+
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot dot-red"></span>
+                        <span class="terminal-dot dot-yellow"></span>
+                        <span class="terminal-dot dot-green"></span>
+                        <span class="terminal-title">Terminal</span>
+                    </div>
+                    <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">make remediate</span>
+<span class="t-muted">Configuring Lightwell Network as package source...</span>
+<span class="t-muted">Resolving PyPDF2 3.0.1</span>    <span class="t-green">&#10003; 3.0.1+rhlw.1</span>
+<span class="t-muted">Resolving sqlparse 0.5.5</span>  <span class="t-green">&#10003; 0.5.5+rhlw.1</span>
+<span class="t-green">Done. All packages resolved.</span></pre>
+                </div>
+
+                <div class="version-transitions">
+                    <div class="version-card" data-animate="true">
+                        <h4 class="version-pkg">PyPDF2</h4>
+                        <div class="version-change">
+                            <span class="version-old">3.0.1</span>
+                            <span class="version-arrow" aria-hidden="true">
+                                <svg width="32" height="16" viewBox="0 0 32 16" fill="none"><path d="M0 8h28M22 2l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span class="version-new">3.0.1<span class="rhlw-suffix">+rhlw.1</span></span>
+                        </div>
+                    </div>
+                    <div class="version-card" data-animate="true">
+                        <h4 class="version-pkg">sqlparse</h4>
+                        <div class="version-change">
+                            <span class="version-old">0.5.5</span>
+                            <span class="version-arrow" aria-hidden="true">
+                                <svg width="32" height="16" viewBox="0 0 32 16" fill="none"><path d="M0 8h28M22 2l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span class="version-new">0.5.5<span class="rhlw-suffix">+rhlw.1</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout callout-info">
+                    <svg class="callout-icon" width="22" height="22" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                        <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M10 9v4M10 7h0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <p><strong>+rhlw</strong> = Red Hat applied a security fix to YOUR exact version. Same API. Same behavior. Patched vulnerabilities.</p>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn-prev" data-prev="2"><span aria-hidden="true">&larr;</span> Back</button>
+                <button class="btn-next" data-next="4">Next: The Result <span aria-hidden="true">&rarr;</span></button>
+            </div>
+        </section>
+
+        <!-- ── STEP 4: The Result ──────────────────────── -->
+        <section class="step-panel" data-step="4" role="tabpanel" aria-label="Step 4: The Result">
+            <div class="panel-header">
+                <span class="step-badge">Step 4</span>
+                <h2 class="panel-title">The Result</h2>
+                <p class="panel-subtitle">Same scanner, same project, same code</p>
+            </div>
+            <div class="panel-body">
+                <div class="narrative">
+                    <p>The only thing that changed is WHERE the packages came from.</p>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-before">
+                        <span class="comparison-label">Before</span>
+                        <span class="stat-number stat-number-sm danger-text">10</span>
+                        <span class="comparison-unit">CVEs</span>
+                    </div>
+                    <div class="comparison-arrow" aria-hidden="true">
+                        <svg width="48" height="24" viewBox="0 0 48 24" fill="none"><path d="M0 12h44M38 4l6 8-6 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div class="comparison-after">
+                        <span class="comparison-label">After</span>
+                        <span class="stat-number stat-number-sm success-text">0</span>
+                        <span class="comparison-unit">CVEs</span>
+                    </div>
+                </div>
+
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot dot-red"></span>
+                        <span class="terminal-dot dot-yellow"></span>
+                        <span class="terminal-dot dot-green"></span>
+                        <span class="terminal-title">Terminal</span>
+                    </div>
+                    <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">make scan</span>
+<span class="t-muted">Scanning dependencies against NVD database...</span>
+
+<span class="t-green">Found 0 vulnerabilities. All clear.</span></pre>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="vuln-table vuln-table-empty" aria-label="Scan results after remediation">
+                        <thead>
+                            <tr>
+                                <th scope="col">CVE ID</th>
+                                <th scope="col">Package</th>
+                                <th scope="col">Severity</th>
+                                <th scope="col">Summary</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="empty-row">
+                                <td colspan="4">
+                                    <div class="empty-state">
+                                        <svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                                            <circle cx="20" cy="20" r="16" stroke="#3e8635" stroke-width="2"/>
+                                            <path d="M13 20l5 5 9-9" stroke="#3e8635" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span>No vulnerabilities found</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn-prev" data-prev="3"><span aria-hidden="true">&larr;</span> Back</button>
+                <button class="btn-next" data-next="5">Next: SBOM <span aria-hidden="true">&rarr;</span></button>
+            </div>
+        </section>
+
+        <!-- ── STEP 5: The Proof — SBOM ────────────────── -->
+        <section class="step-panel" data-step="5" role="tabpanel" aria-label="Step 5: SBOM">
+            <div class="panel-header">
+                <span class="step-badge">Step 5</span>
+                <h2 class="panel-title">The Proof &mdash; SBOM</h2>
+                <p class="panel-subtitle">Software Bill of Materials</p>
+            </div>
+            <div class="panel-body">
+                <div class="narrative">
+                    <p>Every package ships with an auditable software bill of materials.</p>
+                </div>
+
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot dot-red"></span>
+                        <span class="terminal-dot dot-yellow"></span>
+                        <span class="terminal-dot dot-green"></span>
+                        <span class="terminal-title">Terminal</span>
+                    </div>
+                    <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">make sbom</span>
+<span class="t-muted">Generating SPDX 2.3 SBOM for PyPDF2...</span></pre>
+                </div>
+
+                <div class="json-block">
+                    <div class="json-block-header">
+                        <span class="json-format-badge">SPDX 2.3</span>
+                        <span class="json-filename">PyPDF2-3.0.1+rhlw.1.spdx.json</span>
+                    </div>
+                    <pre class="json-body">{
+  <span class="j-key">"spdxVersion"</span>: <span class="j-str">"SPDX-2.3"</span>,
+  <span class="j-key">"dataLicense"</span>: <span class="j-str">"CC0-1.0"</span>,
+  <span class="j-key">"SPDXID"</span>: <span class="j-str">"SPDXRef-DOCUMENT"</span>,
+  <span class="j-key">"name"</span>: <span class="j-str">"PyPDF2-3.0.1+rhlw.1"</span>,
+  <span class="j-key">"packages"</span>: [{
+    <span class="j-key">"name"</span>: <span class="j-str">"PyPDF2"</span>,
+    <span class="j-key">"versionInfo"</span>: <span class="j-str">"3.0.1+rhlw.1"</span>,
+    <span class="j-key highlight-field">"supplier"</span>: <span class="j-str highlight-field">"Organization: Red Hat"</span>,
+    <span class="j-key">"downloadLocation"</span>: <span class="j-str">"https://lw.cdn.redhat.com/..."</span>,
+    <span class="j-key">"externalRefs"</span>: [{
+      <span class="j-key">"referenceType"</span>: <span class="j-str">"purl"</span>,
+      <span class="j-key highlight-field">"referenceLocator"</span>: <span class="j-str highlight-field">"pkg:pypi/PyPDF2@3.0.1%2Brhlw.1"</span>
+    }]
+  }]
+}</pre>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn-prev" data-prev="4"><span aria-hidden="true">&larr;</span> Back</button>
+                <button class="btn-next" data-next="6">Next: Provenance <span aria-hidden="true">&rarr;</span></button>
+            </div>
+        </section>
+
+        <!-- ── STEP 6: The Proof — Provenance ──────────── -->
+        <section class="step-panel" data-step="6" role="tabpanel" aria-label="Step 6: Provenance">
+            <div class="panel-header">
+                <span class="step-badge">Step 6</span>
+                <h2 class="panel-title">The Proof &mdash; Provenance</h2>
+                <p class="panel-subtitle">SLSA Level 3 Build Attestation</p>
+            </div>
+            <div class="panel-body">
+                <div class="narrative">
+                    <p>Cryptographic proof of HOW this package was built.</p>
+                </div>
+
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot dot-red"></span>
+                        <span class="terminal-dot dot-yellow"></span>
+                        <span class="terminal-dot dot-green"></span>
+                        <span class="terminal-title">Terminal</span>
+                    </div>
+                    <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">make provenance</span>
+<span class="t-muted">Fetching SLSA provenance attestation...</span>
+<span class="t-green">Attestation verified.</span></pre>
+                </div>
+
+                <div class="attestation-card">
+                    <div class="attestation-header">
+                        <h4>Build Attestation</h4>
+                        <span class="slsa-badge">SLSA Level 3</span>
+                    </div>
+                    <dl class="attestation-fields">
+                        <div class="att-field">
+                            <dt>Package</dt>
+                            <dd>PyPDF2-3.0.1+rhlw.1</dd>
+                        </div>
+                        <div class="att-field">
+                            <dt>Build Type</dt>
+                            <dd>Tekton Pipeline</dd>
+                        </div>
+                        <div class="att-field">
+                            <dt>Builder ID</dt>
+                            <dd class="att-mono">https://tekton.dev/chains/v2</dd>
+                        </div>
+                        <div class="att-field">
+                            <dt>Signed</dt>
+                            <dd><span class="att-signed">Yes (Sigstore / cosign)</span></dd>
+                        </div>
+                        <div class="att-field">
+                            <dt>Timestamp</dt>
+                            <dd class="att-mono">2026-10-15T14:32:07Z</dd>
+                        </div>
+                        <div class="att-field">
+                            <dt>Invocation</dt>
+                            <dd>Hermetic, reproducible</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn-prev" data-prev="5"><span aria-hidden="true">&larr;</span> Back</button>
+                <button class="btn-next" data-next="7">Next: VEX <span aria-hidden="true">&rarr;</span></button>
+            </div>
+        </section>
+
+        <!-- ── STEP 7: The Proof — VEX ─────────────────── -->
+        <section class="step-panel" data-step="7" role="tabpanel" aria-label="Step 7: VEX">
+            <div class="panel-header">
+                <span class="step-badge">Step 7</span>
+                <h2 class="panel-title">The Proof &mdash; VEX</h2>
+                <p class="panel-subtitle">Vulnerability Exploitability eXchange</p>
+            </div>
+            <div class="panel-body">
+                <div class="narrative">
+                    <p>During the embargo period, this is the authoritative record that the fix exists.</p>
+                </div>
+
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot dot-red"></span>
+                        <span class="terminal-dot dot-yellow"></span>
+                        <span class="terminal-dot dot-green"></span>
+                        <span class="terminal-title">Terminal</span>
+                    </div>
+                    <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">make vex</span>
+<span class="t-muted">Fetching VEX records...</span>
+<span class="t-green">10 vulnerability records retrieved.</span></pre>
+                </div>
+
+                <div class="vex-grid">
+                    <div class="vex-card">
+                        <div class="vex-card-top">
+                            <span class="badge badge-high">HIGH</span>
+                            <span class="vex-status">FIXED</span>
+                        </div>
+                        <h4 class="vex-cve">PYSEC-2026-1835</h4>
+                        <p class="vex-pkg">PyPDF2 3.0.1</p>
+                        <p class="vex-fixed">Fixed in <strong>3.0.1+rhlw.1</strong></p>
+                        <p class="vex-summary">Infinite loop via crafted PDF causing denial of service</p>
+                    </div>
+                    <div class="vex-card">
+                        <div class="vex-card-top">
+                            <span class="badge badge-high">HIGH</span>
+                            <span class="vex-status">FIXED</span>
+                        </div>
+                        <h4 class="vex-cve">PYSEC-2026-1836</h4>
+                        <p class="vex-pkg">sqlparse 0.5.5</p>
+                        <p class="vex-fixed">Fixed in <strong>0.5.5+rhlw.1</strong></p>
+                        <p class="vex-summary">ReDoS in comment parsing</p>
+                    </div>
+                    <div class="vex-card">
+                        <div class="vex-card-top">
+                            <span class="badge badge-high">HIGH</span>
+                            <span class="vex-status">FIXED</span>
+                        </div>
+                        <h4 class="vex-cve">PYSEC-2026-1838</h4>
+                        <p class="vex-pkg">sqlparse 0.5.5</p>
+                        <p class="vex-fixed">Fixed in <strong>0.5.5+rhlw.1</strong></p>
+                        <p class="vex-summary">Injection through malformed unicode escapes</p>
+                    </div>
+                    <div class="vex-card">
+                        <div class="vex-card-top">
+                            <span class="badge badge-medium">MED</span>
+                            <span class="vex-status">FIXED</span>
+                        </div>
+                        <h4 class="vex-cve">PYSEC-2026-1840</h4>
+                        <p class="vex-pkg">sqlparse 0.5.5</p>
+                        <p class="vex-fixed">Fixed in <strong>0.5.5+rhlw.1</strong></p>
+                        <p class="vex-summary">Resource consumption via recursive CTE parsing</p>
+                    </div>
+                </div>
+                <p class="vex-footnote">Showing 4 of 10 VEX records. All vulnerabilities have status <strong>FIXED</strong>.</p>
+            </div>
+            <div class="panel-footer">
+                <button class="btn-prev" data-prev="6"><span aria-hidden="true">&larr;</span> Back</button>
+                <button class="btn-next" data-next="8">Next: Architecture <span aria-hidden="true">&rarr;</span></button>
+            </div>
+        </section>
+
+        <!-- ── STEP 8: The Architecture ────────────────── -->
+        <section class="step-panel" data-step="8" role="tabpanel" aria-label="Step 8: The Architecture">
+            <div class="panel-header">
+                <span class="step-badge">Step 8</span>
+                <h2 class="panel-title">The Architecture</h2>
+                <p class="panel-subtitle">How it works in production</p>
+            </div>
+            <div class="panel-body">
+                <div class="narrative">
+                    <p>Repository redirect, not platform migration.</p>
+                </div>
+
+                <div class="arch-diagram" aria-label="Architecture flow diagram">
+                    <div class="arch-row">
+                        <div class="arch-node arch-node-start">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            <span>Developer</span>
+                        </div>
+                        <div class="arch-connector"><span class="arch-connector-label">pip install</span></div>
+                        <div class="arch-node">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M3 9h18M9 9v12" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            <span>Artifactory</span>
+                        </div>
+                        <div class="arch-connector" aria-hidden="true"></div>
+                        <div class="arch-node arch-node-highlight">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                                <path d="M12 12l9-5M12 12v10M12 12L3 7" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            <span>Lightwell Network</span>
+                        </div>
+                        <div class="arch-connector" aria-hidden="true"></div>
+                        <div class="arch-node arch-node-end">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M7 10h4M7 14h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            <span>Patched Pkgs</span>
+                        </div>
+                    </div>
+
+                    <div class="arch-down-connector" aria-hidden="true">
+                        <svg width="20" height="32" viewBox="0 0 20 32" fill="none"><path d="M10 0v28M5 23l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+
+                    <div class="arch-row">
+                        <div class="arch-node">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            <span>Scanner</span>
+                        </div>
+                        <div class="arch-connector" aria-hidden="true"></div>
+                        <div class="arch-node arch-node-success">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Clean Scan</span>
+                        </div>
+                        <div class="arch-connector" aria-hidden="true"></div>
+                        <div class="arch-node arch-node-success">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Deploy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-stats">
+                    <div class="key-stat">
+                        <span class="key-stat-number">32,000+</span>
+                        <span class="key-stat-label">Libraries</span>
+                    </div>
+                    <div class="key-stat">
+                        <span class="key-stat-number">$5B</span>
+                        <span class="key-stat-label">Commitment</span>
+                    </div>
+                    <div class="key-stat">
+                        <span class="key-stat-number">&lt; 24h</span>
+                        <span class="key-stat-label">To Deploy</span>
+                    </div>
+                    <div class="key-stat">
+                        <span class="key-stat-number">SLSA 3</span>
+                        <span class="key-stat-label">Build Level</span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn-prev" data-prev="7"><span aria-hidden="true">&larr;</span> Back</button>
+                <button class="btn-restart" id="btnRestart">Restart Demo</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ── Keyboard hint ───────────────────────────────────── -->
+    <div class="keyboard-hint" aria-hidden="true">
+        <kbd>&larr;</kbd> <kbd>&rarr;</kbd> navigate
+    </div>
+
+    <script src="/static/demo.js"></script>
+</body>
+</html>
