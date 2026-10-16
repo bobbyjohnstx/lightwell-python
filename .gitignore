@@ -27,6 +27,7 @@ SETUP.local
 
 # Project instructions (local only)
 CLAUDE.md
+.claude/
 
 # Superpowers workspace
 .superpowers/
