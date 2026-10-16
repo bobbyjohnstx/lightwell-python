@@ -20,11 +20,15 @@ source "$VENV_DIR/bin/activate"
 echo "  \$ pip show <package> | grep Version"
 echo ""
 
+SKIP_PACKAGES="Flask flask Werkzeug werkzeug Jinja2 jinja2 itsdangerous click MarkupSafe blinker"
 FOUND_RHLW=false
 
 while IFS= read -r line; do
     pkg=$(echo "$line" | sed 's/[=<>!].*//' | tr -d '[:space:]')
     [[ -z "$pkg" || "$pkg" == \#* ]] && continue
+    if echo " $SKIP_PACKAGES " | grep -qi " $pkg "; then
+        continue
+    fi
 
     version=$(pip show "$pkg" 2>/dev/null | grep "^Version:" | awk '{print $2}')
     if [[ -z "$version" ]]; then
