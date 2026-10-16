@@ -1,6 +1,9 @@
-.PHONY: setup scan remediate remediate-jfrog verify reset run run-minimal provenance sbom vex lens test test-integration help
+.PHONY: doctor setup scan remediate remediate-jfrog verify reset run run-minimal provenance sbom vex lens test test-integration help
 
 APP ?= chatbot
+
+doctor: ## Check environment, credentials, and connectivity
+	@bash scripts/doctor.sh
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
