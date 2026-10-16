@@ -37,10 +37,16 @@ echo ""
 source "$VENV_DIR/bin/activate"
 
 # Extract package names from requirements.txt (strip version pins)
+# Skip infrastructure packages not targeted for remediation
+SKIP_PACKAGES="Flask flask Werkzeug werkzeug Jinja2 jinja2 itsdangerous click MarkupSafe blinker"
+
 PACKAGES=""
 while IFS= read -r line; do
     pkg=$(echo "$line" | sed 's/[=<>!].*//' | tr -d '[:space:]')
     [[ -z "$pkg" || "$pkg" == \#* ]] && continue
+    if echo " $SKIP_PACKAGES " | grep -qi " $pkg "; then
+        continue
+    fi
     PACKAGES="$PACKAGES $pkg"
 done < "$REQ_FILE"
 
