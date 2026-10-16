@@ -47,6 +47,8 @@ while IFS= read -r line; do
             echo "  SBOM file: $(basename "$SBOM_FILE")"
             echo "  Path: $SBOM_FILE"
             echo ""
+            echo "  \$ unzip -p ${pkg}-${version}.whl ...dist-info/sboms/$(basename "$SBOM_FILE")"
+            echo ""
             python -m json.tool "$SBOM_FILE" 2>/dev/null | head -50
             echo ""
             echo "  ... (showing first 50 lines — full SBOM at path above)"
