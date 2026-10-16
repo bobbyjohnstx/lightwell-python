@@ -72,11 +72,23 @@ Items are flagged as pass (✓), warning (⚠ optional feature unavailable), or 
 
 **Chatbot** (`chatbot/`) — Flask web app with a mocked customer service chatbot UI. Professional look for customer demos. Runs on port 5001.
 
+**Demo Dashboard** (`/demo`) — Red Hat branded interactive walkthrough. 8 narrated steps covering the full supply chain security story: scan, remediate, verify, SBOM, provenance, VEX, and architecture. Designed for half-screen use alongside a live terminal.
+
 ```bash
 make setup APP=minimal     # Use minimal app
 make setup APP=chatbot     # Use chatbot app (default)
 make run                   # Launch chatbot at http://localhost:5001
 ```
+
+### Presenting the Demo
+
+Run the chatbot app with `make run`, then open two browser tabs:
+- `http://localhost:5001/demo` — the narrated dashboard (left half of screen)
+- `http://localhost:5001/` — the chatbot app (show briefly in Step 1)
+
+In the terminal (right half of screen), run the `make` commands as you click through each dashboard step. The dashboard provides the narrative context; the terminal shows the live proof.
+
+Navigate the dashboard with the numbered step dots, arrow keys, or the Next/Back buttons.
 
 ## All Targets
 
@@ -88,7 +100,7 @@ make remediate             # Patch via Lightwell direct
 make remediate-jfrog       # Patch via JFrog Artifactory proxy
 make verify                # Show installed versions, confirm +rhlw suffixes
 make reset                 # Reset to unpatched state
-make run                   # Start Flask chatbot (port 5001)
+make run                   # Start Flask chatbot + demo dashboard (port 5001)
 make run-minimal           # Run minimal script
 make sbom                  # Extract SPDX 2.3 SBOM from remediated packages
 make provenance            # Fetch SLSA L3 build provenance attestation
