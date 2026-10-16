@@ -7,6 +7,12 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 REQ_FILE="$PROJECT_DIR/$APP/requirements.txt"
 VENV_DIR="$PROJECT_DIR/venv"
 
+if [[ -f "$PROJECT_DIR/.env" ]]; then
+    set -a
+    source "$PROJECT_DIR/.env"
+    set +a
+fi
+
 # JFrog Cloud free tier (jfrog.com/start-free) — has Pro features including PyPI repos.
 # Set JFROG_INSTANCE to your instance name.
 JFROG_INSTANCE="${JFROG_INSTANCE:-your-instance}"
