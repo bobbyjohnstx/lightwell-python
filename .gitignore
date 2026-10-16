@@ -9,9 +9,10 @@ build/
 venv/
 .venv/
 
-# Secrets — NEVER commit
+# Secrets and local config — NEVER commit
 .env
 .netrc
+SETUP.local
 
 # IDE
 .idea/
