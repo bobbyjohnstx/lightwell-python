@@ -49,7 +49,7 @@ if command -v grype &>/dev/null; then
     echo "Scanner: Grype"
     echo "  \$ grype dir:."
     echo ""
-    grype dir:. --only-fixed
+    grype dir:.
     exit 0
 fi
 
