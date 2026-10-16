@@ -107,15 +107,10 @@ body {
     gap: 10px;
 }
 
-.hat-icon {
+.header-logo {
+    height: 32px;
+    width: auto;
     flex-shrink: 0;
-}
-
-.brand-name {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 17px;
-    letter-spacing: -0.01em;
 }
 
 .brand-divider {
