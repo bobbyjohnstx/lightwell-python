@@ -32,5 +32,10 @@ echo "  \$ pip install -r $APP/requirements.txt"
 pip install --quiet -r "$REQ_FILE"
 
 echo ""
+echo "Installing scanner..."
+echo "  \$ pip install pip-audit"
+pip install --quiet pip-audit
+
+echo ""
 echo "Setup complete. Dependencies installed from PyPI (unpatched)."
 echo "Run 'make scan' to check for vulnerabilities."

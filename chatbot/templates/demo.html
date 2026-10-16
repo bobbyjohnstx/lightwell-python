@@ -130,9 +130,9 @@ setuptools   75.6.0</pre>
                 </div>
 
                 <div class="stat-hero stat-danger">
-                    <span class="stat-number">6</span>
+                    <span class="stat-number">10</span>
                     <span class="stat-label">Known CVEs</span>
-                    <span class="stat-detail">3 HIGH &bull; 3 MEDIUM</span>
+                    <span class="stat-detail">1 in PyPDF2 &bull; 9 in sqlparse</span>
                 </div>
 
                 <div class="terminal">
@@ -140,20 +140,22 @@ setuptools   75.6.0</pre>
                         <span class="terminal-dot dot-red"></span>
                         <span class="terminal-dot dot-yellow"></span>
                         <span class="terminal-dot dot-green"></span>
-                        <span class="terminal-title">Terminal — Grype Scanner</span>
+                        <span class="terminal-title">Terminal — pip-audit</span>
                     </div>
                     <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">make scan</span>
 
-<span class="t-muted">Scanner: Grype</span>
-<span class="t-muted">  $ grype dir:.</span>
+<span class="t-muted">Scanner: pip-audit</span>
+<span class="t-muted">  $ pip-audit</span>
 
-<span class="t-green">NAME      INSTALLED  FIXED IN  TYPE    VULNERABILITY        SEVERITY</span>
-<span class="t-red">sqlparse  0.5.5      0.6.0     python  GHSA-pwgv-4x5q-6m9f  High</span>
-<span class="t-red">sqlparse  0.5.5      0.6.0     python  GHSA-prg7-hcfm-mfcr  High</span>
-<span class="t-red">sqlparse  0.5.5      0.6.0     python  GHSA-f2ff-p2ww-7p4p  High</span>
-<span class="t-yellow">pypdf2    3.0.1               python  GHSA-4vvm-4w3v-6mr8  Medium</span>
-<span class="t-yellow">sqlparse  0.5.5      0.6.0     python  GHSA-cfqr-cjx5-5jcm  Medium</span>
-<span class="t-yellow">sqlparse  0.5.5      0.6.0     python  GHSA-3496-9g83-7v6x  Medium</span></pre>
+<span class="t-red">Found 10 known vulnerabilities in 2 packages</span>
+<span class="t-green">Name     Version ID              Fix Versions</span>
+<span class="t-red">pypdf2   3.0.1   PYSEC-2026-1835 3.9.0</span>
+<span class="t-yellow">sqlparse 0.5.5   PYSEC-2026-3697 0.6.0</span>
+<span class="t-yellow">sqlparse 0.5.5   PYSEC-2026-3696 0.6.0</span>
+<span class="t-yellow">sqlparse 0.5.5   PYSEC-2026-3698 0.6.0</span>
+<span class="t-yellow">sqlparse 0.5.5   PYSEC-2026-3699 0.6.0</span>
+<span class="t-yellow">sqlparse 0.5.5   PYSEC-2026-3923 0.6.0</span>
+<span class="t-muted">  ... (10 total)</span></pre>
                 </div>
 
                 <div class="table-wrapper">
@@ -168,40 +170,40 @@ setuptools   75.6.0</pre>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="col-cve">GHSA-pwgv-4x5q-6m9f</td>
-                                <td class="col-pkg">sqlparse 0.5.5</td>
+                                <td class="col-cve">PYSEC-2026-1835</td>
+                                <td class="col-pkg">PyPDF2 3.0.1</td>
                                 <td><span class="badge badge-high">HIGH</span></td>
-                                <td>CPU DoS via TokenList materialization before depth caps trigger</td>
+                                <td>Infinite loop via crafted PDF comment parsing</td>
                             </tr>
                             <tr>
-                                <td class="col-cve">GHSA-prg7-hcfm-mfcr</td>
-                                <td class="col-pkg">sqlparse 0.5.5</td>
-                                <td><span class="badge badge-high">HIGH</span></td>
-                                <td>ReDoS via dollar-quoted SQL literal handling</td>
-                            </tr>
-                            <tr>
-                                <td class="col-cve">GHSA-f2ff-p2ww-7p4p</td>
+                                <td class="col-cve">PYSEC-2026-3697</td>
                                 <td class="col-pkg">sqlparse 0.5.5</td>
                                 <td><span class="badge badge-high">HIGH</span></td>
                                 <td>Quadratic O(n&sup2;) DoS in group_comments</td>
                             </tr>
                             <tr>
-                                <td class="col-cve">GHSA-4vvm-4w3v-6mr8</td>
-                                <td class="col-pkg">PyPDF2 3.0.1</td>
-                                <td><span class="badge badge-medium">MED</span></td>
-                                <td>Infinite loop via crafted PDF comment parsing</td>
+                                <td class="col-cve">PYSEC-2026-3696</td>
+                                <td class="col-pkg">sqlparse 0.5.5</td>
+                                <td><span class="badge badge-high">HIGH</span></td>
+                                <td>SQL string breakout through unescaped backslashes</td>
                             </tr>
                             <tr>
-                                <td class="col-cve">GHSA-cfqr-cjx5-5jcm</td>
+                                <td class="col-cve">PYSEC-2026-3698</td>
+                                <td class="col-pkg">sqlparse 0.5.5</td>
+                                <td><span class="badge badge-high">HIGH</span></td>
+                                <td>ReDoS via dollar-quoted SQL literal handling</td>
+                            </tr>
+                            <tr>
+                                <td class="col-cve">PYSEC-2026-3699</td>
+                                <td class="col-pkg">sqlparse 0.5.5</td>
+                                <td><span class="badge badge-high">HIGH</span></td>
+                                <td>CPU DoS via TokenList materialization</td>
+                            </tr>
+                            <tr>
+                                <td class="col-cve">PYSEC-2026-3923</td>
                                 <td class="col-pkg">sqlparse 0.5.5</td>
                                 <td><span class="badge badge-medium">MED</span></td>
                                 <td>Quadratic CPU consumption in tuple list reindentation</td>
-                            </tr>
-                            <tr>
-                                <td class="col-cve">GHSA-3496-9g83-7v6x</td>
-                                <td class="col-pkg">sqlparse 0.5.5</td>
-                                <td><span class="badge badge-medium">MED</span></td>
-                                <td>SQL string breakout through unescaped backslashes</td>
                             </tr>
                         </tbody>
                     </table>
@@ -291,7 +293,7 @@ setuptools   75.6.0</pre>
                 <div class="comparison">
                     <div class="comparison-before">
                         <span class="comparison-label">Before</span>
-                        <span class="stat-number stat-number-sm danger-text">6</span>
+                        <span class="stat-number stat-number-sm danger-text">10</span>
                         <span class="comparison-unit">CVEs</span>
                     </div>
                     <div class="comparison-arrow" aria-hidden="true">
@@ -485,7 +487,7 @@ setuptools   75.6.0</pre>
                     </div>
                     <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">make vex</span>
 <span class="t-muted">Fetching VEX records...</span>
-<span class="t-green">6 vulnerability records retrieved for Python remediated packages.</span></pre>
+<span class="t-green">6 CVE records retrieved for Python remediated packages.</span></pre>
                 </div>
 
                 <div class="vex-grid">

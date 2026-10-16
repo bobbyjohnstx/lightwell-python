@@ -47,9 +47,9 @@ fi
 # Try grype
 if command -v grype &>/dev/null; then
     echo "Scanner: Grype"
-    echo "  \$ grype dir:."
+    echo "  \$ grype dir:venv/"
     echo ""
-    grype dir:.
+    grype dir:"$PROJECT_DIR/venv"
     exit 0
 fi
 
