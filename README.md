@@ -26,6 +26,46 @@ make verify                # Confirm +rhlw version suffixes
 make reset                 # Snap back to vulnerable state for next demo
 ```
 
+## Pre-Demo Check
+
+Run `make doctor` before any demo to verify your environment:
+
+```
+=== Lightwell Python Demo — Environment Check ===
+
+Runtime:
+  ✓  Python 3.14.7 (3.12+ required)
+  ✓  pip available
+
+Credentials:
+  ✓  ~/.netrc exists (permissions 600)
+  ✓  Lightwell credentials found in ~/.netrc
+  ✓  Lightwell auth verified (HTTP 200)
+  ✓  JFrog credentials found in ~/.netrc
+  ✓  JFrog auth verified (HTTP 200)
+
+Scanners:
+  ✓  pip-audit installed
+  ✓  Grype installed
+
+Project:
+  ✓  Virtual environment exists
+  ✓  minimal/requirements.txt exists
+  ✓  chatbot/requirements.txt exists
+
+Lightwell catalog:
+  ✓  Python Remediated catalog accessible (2 packages)
+```
+
+Checks performed:
+- **Runtime** — Python 3.12+ and pip are available
+- **Credentials** — `~/.netrc` exists with correct permissions (600), contains entries for `packages.redhat.com` and JFrog. Tests actual authentication against both APIs — catches expired or revoked tokens before you're in front of a customer.
+- **Scanners** — at least one of pip-audit, Grype, or Black Duck (`.env` token) is available
+- **Project** — venv and requirements files exist
+- **Catalog** — live connectivity to the Lightwell Remediated repository, with package count
+
+Items are flagged as pass (✓), warning (⚠ optional feature unavailable), or failure (✗ demo will not work).
+
 ## Demo Apps
 
 **Minimal** (`minimal/`) — 10-line script using PyPDF2 and sqlparse. For quick testing.
