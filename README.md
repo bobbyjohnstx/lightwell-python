@@ -5,6 +5,8 @@ Customer-facing demo showing how Red Hat Lightwell Network patches vulnerable Py
 ## Prerequisites
 
 - Python 3.12+
+- `make` and `curl` (standard on macOS/Linux)
+- `cosign` (optional — for provenance signature verification: `brew install cosign`)
 - `~/.netrc` with Lightwell service account credentials:
   ```
   machine packages.redhat.com login <service-account-username> password <service-account-token>
@@ -18,6 +20,7 @@ Customer-facing demo showing how Red Hat Lightwell Network patches vulnerable Py
 ## Quick Start
 
 ```bash
+make doctor                # Verify environment (run first)
 make setup                 # Create venv, install vulnerable deps from PyPI
 make scan                  # Find CVEs (10 vulnerabilities)
 make remediate             # Patch via Lightwell (zero code changes)

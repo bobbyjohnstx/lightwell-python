@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lightwell Network — Supply Chain Security Demo</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700;900&family=Red+Hat+Text:wght@400;500;700&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/demo.css">
 </head>
 <body>
@@ -139,6 +136,7 @@ setuptools   75.6.0</pre>
                         <span class="terminal-title">Terminal — pip-audit</span>
                     </div>
                     <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">make scan</span>
+<span class="t-muted">=== Vulnerability Scan ===</span>
 
 <span class="t-muted">Scanner: pip-audit</span>
 <span class="t-muted">  $ pip-audit</span>
@@ -231,10 +229,14 @@ setuptools   75.6.0</pre>
                         <span class="terminal-title">Terminal</span>
                     </div>
                     <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">make remediate</span>
-<span class="t-muted">Configuring Lightwell Network as package source...</span>
-<span class="t-muted">Resolving PyPDF2 3.0.1</span>    <span class="t-green">&#10003; 3.0.1+rhlw.1</span>
-<span class="t-muted">Resolving sqlparse 0.5.5</span>  <span class="t-green">&#10003; 0.5.5+rhlw.1</span>
-<span class="t-green">Done. All packages resolved.</span></pre>
+<span class="t-muted">=== Lightwell Remediation ===</span>
+
+<span class="t-muted">Installing patched packages from Red Hat Lightwell Network (Remediated)...</span>
+
+  <span class="t-green">&#10003;</span> PyPDF2==3.0.1+rhlw.1  <span class="t-muted">[remediated]</span>
+  <span class="t-green">&#10003;</span> sqlparse==0.5.5+rhlw.1  <span class="t-muted">[remediated]</span>
+
+<span class="t-green">Remediation complete.</span></pre>
                 </div>
 
                 <div class="version-transitions">
@@ -310,9 +312,12 @@ setuptools   75.6.0</pre>
                         <span class="terminal-title">Terminal</span>
                     </div>
                     <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">make scan</span>
-<span class="t-muted">Scanning dependencies against NVD database...</span>
+<span class="t-muted">=== Vulnerability Scan ===</span>
 
-<span class="t-green">Found 0 vulnerabilities. All clear.</span></pre>
+<span class="t-muted">Scanner: pip-audit</span>
+<span class="t-muted">  $ pip-audit</span>
+
+<span class="t-green">No known vulnerabilities found</span></pre>
                 </div>
 
                 <div class="table-wrapper">
@@ -356,7 +361,7 @@ setuptools   75.6.0</pre>
             </div>
             <div class="panel-body">
                 <div class="narrative">
-                    <p>Every package ships with an auditable software bill of materials.</p>
+                    <p>Every remediated package has an auditable SBOM &mdash; available via Lightwell Lens or embedded in the wheel.</p>
                 </div>
 
                 <div class="terminal">
@@ -367,13 +372,19 @@ setuptools   75.6.0</pre>
                         <span class="terminal-title">Terminal</span>
                     </div>
                     <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">make sbom</span>
-<span class="t-muted">Generating SPDX 2.3 SBOM for PyPDF2...</span></pre>
+<span class="t-muted">=== SBOM Inspection ===</span>
+
+<span class="t-muted">--- PyPDF2==3.0.1+rhlw.1 ---</span>
+<span class="t-green">  SBOM file: PyPDF2-3.0.1+rhlw.1.spdx.json</span>
+
+<span class="t-muted">SBOMs also available via:</span>
+  Lightwell Lens (console.redhat.com/lightwell/lens)</pre>
                 </div>
 
                 <div class="json-block">
                     <div class="json-block-header">
                         <span class="json-format-badge">SPDX 2.3</span>
-                        <span class="json-filename">PyPDF2-3.0.1+rhlw.1.spdx.json</span>
+                        <span class="json-filename">SBOM format (via Lightwell Lens)</span>
                     </div>
                     <pre class="json-body">{
   <span class="j-key">"spdxVersion"</span>: <span class="j-str">"SPDX-2.3"</span>,
@@ -408,7 +419,7 @@ setuptools   75.6.0</pre>
             </div>
             <div class="panel-body">
                 <div class="narrative">
-                    <p>Cryptographic proof of HOW this package was built.</p>
+                    <p>Cryptographic proof of HOW this package was built &mdash; viewable in Lightwell Lens.</p>
                 </div>
 
                 <div class="terminal">
@@ -419,8 +430,12 @@ setuptools   75.6.0</pre>
                         <span class="terminal-title">Terminal</span>
                     </div>
                     <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">make provenance</span>
-<span class="t-muted">Fetching SLSA provenance attestation...</span>
-<span class="t-green">Attestation verified.</span></pre>
+<span class="t-muted">=== SLSA L3 Provenance Verification ===</span>
+
+<span class="t-muted">--- PyPDF2==3.0.1+rhlw.1 ---</span>
+  <span class="t-green">&#10003;</span> Attestation found (<span class="t-green">SLSA Level 3</span>)
+
+<span class="t-muted">  Full attestations available via Lightwell Lens</span></pre>
                 </div>
 
                 <div class="attestation-card">
@@ -438,20 +453,12 @@ setuptools   75.6.0</pre>
                             <dd>Tekton Pipeline</dd>
                         </div>
                         <div class="att-field">
-                            <dt>Builder ID</dt>
-                            <dd class="att-mono">https://tekton.dev/chains/v2</dd>
-                        </div>
-                        <div class="att-field">
                             <dt>Signed</dt>
-                            <dd><span class="att-signed">Yes (Sigstore / cosign)</span></dd>
+                            <dd><span class="att-signed">Sigstore / cosign</span></dd>
                         </div>
                         <div class="att-field">
-                            <dt>Timestamp</dt>
-                            <dd class="att-mono">2026-10-15T14:32:07Z</dd>
-                        </div>
-                        <div class="att-field">
-                            <dt>Invocation</dt>
-                            <dd>Hermetic, reproducible</dd>
+                            <dt>Verification</dt>
+                            <dd>Via Lightwell Lens or cosign CLI</dd>
                         </div>
                     </dl>
                 </div>
@@ -482,8 +489,12 @@ setuptools   75.6.0</pre>
                         <span class="terminal-title">Terminal</span>
                     </div>
                     <pre class="terminal-body"><span class="t-prompt">$</span> <span class="t-cmd">make vex</span>
-<span class="t-muted">Fetching VEX records...</span>
-<span class="t-green">6 CVE records retrieved for Python remediated packages.</span></pre>
+<span class="t-muted">=== Lightwell VEX / OSV Vulnerability Data ===</span>
+
+<span class="t-muted">Downloading CVE records (parallel)...</span>
+<span class="t-muted">Filtering to this project's dependencies...</span>
+
+<span class="t-green">Showed 6 CVE records relevant to this project.</span></pre>
                 </div>
 
                 <div class="vex-grid">
@@ -502,33 +513,53 @@ setuptools   75.6.0</pre>
                             <span class="badge badge-high">HIGH</span>
                             <span class="vex-status">FIXED</span>
                         </div>
-                        <h4 class="vex-cve">PYSEC-2026-1836</h4>
+                        <h4 class="vex-cve">PYSEC-2026-3697</h4>
                         <p class="vex-pkg">sqlparse 0.5.5</p>
                         <p class="vex-fixed">Fixed in <strong>0.5.5+rhlw.1</strong></p>
-                        <p class="vex-summary">ReDoS in comment parsing</p>
+                        <p class="vex-summary">Quadratic O(n&sup2;) DoS in group_comments</p>
                     </div>
                     <div class="vex-card">
                         <div class="vex-card-top">
                             <span class="badge badge-high">HIGH</span>
                             <span class="vex-status">FIXED</span>
                         </div>
-                        <h4 class="vex-cve">PYSEC-2026-1838</h4>
+                        <h4 class="vex-cve">PYSEC-2026-3696</h4>
                         <p class="vex-pkg">sqlparse 0.5.5</p>
                         <p class="vex-fixed">Fixed in <strong>0.5.5+rhlw.1</strong></p>
-                        <p class="vex-summary">Injection through malformed unicode escapes</p>
+                        <p class="vex-summary">SQL string breakout through unescaped backslashes</p>
+                    </div>
+                    <div class="vex-card">
+                        <div class="vex-card-top">
+                            <span class="badge badge-high">HIGH</span>
+                            <span class="vex-status">FIXED</span>
+                        </div>
+                        <h4 class="vex-cve">PYSEC-2026-3698</h4>
+                        <p class="vex-pkg">sqlparse 0.5.5</p>
+                        <p class="vex-fixed">Fixed in <strong>0.5.5+rhlw.1</strong></p>
+                        <p class="vex-summary">ReDoS via dollar-quoted SQL literal handling</p>
+                    </div>
+                    <div class="vex-card">
+                        <div class="vex-card-top">
+                            <span class="badge badge-high">HIGH</span>
+                            <span class="vex-status">FIXED</span>
+                        </div>
+                        <h4 class="vex-cve">PYSEC-2026-3699</h4>
+                        <p class="vex-pkg">sqlparse 0.5.5</p>
+                        <p class="vex-fixed">Fixed in <strong>0.5.5+rhlw.1</strong></p>
+                        <p class="vex-summary">CPU DoS via TokenList materialization</p>
                     </div>
                     <div class="vex-card">
                         <div class="vex-card-top">
                             <span class="badge badge-medium">MED</span>
                             <span class="vex-status">FIXED</span>
                         </div>
-                        <h4 class="vex-cve">PYSEC-2026-1840</h4>
+                        <h4 class="vex-cve">PYSEC-2026-3923</h4>
                         <p class="vex-pkg">sqlparse 0.5.5</p>
                         <p class="vex-fixed">Fixed in <strong>0.5.5+rhlw.1</strong></p>
-                        <p class="vex-summary">Resource consumption via recursive CTE parsing</p>
+                        <p class="vex-summary">Quadratic CPU consumption in tuple list reindentation</p>
                     </div>
                 </div>
-                <p class="vex-footnote">Showing 4 of 10 VEX records. All vulnerabilities have status <strong>FIXED</strong>.</p>
+                <p class="vex-footnote">Showing 6 of 10 VEX records for this project. All vulnerabilities have status <strong>FIXED</strong>.</p>
             </div>
             <div class="panel-footer">
                 <button class="btn-prev" data-prev="6"><span aria-hidden="true">&larr;</span> Back</button>
